@@ -14,7 +14,8 @@ module.exports = function (api) {
           },
         },
       ],
-      "react-native-reanimated/plugin",
+      // skip worklets plugin on web/Netlify — reanimated v4 web uses CSS, not worklets
+      ...(process.env.NETLIFY ? [] : ["react-native-reanimated/plugin"]),
     ],
   };
 };
